@@ -5,6 +5,7 @@ console.log(galleryItems);
 
 const gallery = document.querySelector('.gallery');
 
+//змінна для перевірки відкритого модального вікна
 let isModalOpen = false;
 
 const imgGallary = galleryItems
@@ -28,27 +29,25 @@ gallery.insertAdjacentHTML('beforeend', imgGallary);
 gallery.addEventListener('click', event => {
   event.preventDefault();
 
+  onImgClick(event);
+});
+
+function onImgClick(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
   }
-  onBasicLightboxClick(event);
-});
 
-function onBasicLightboxClick(event) {
-  const imgOriginal = event.target.dataset.source;
   const modal = basicLightbox.create(
     `
-		<img src=${imgOriginal}>
+		<img src=${event.target.dataset.source}>
 	`
   );
   modal.show();
-
   isModalOpen = true;
-}
 
-/* document.addEventListener('keydown', event => {
-  if (event.code === 'Escape' && isModalOpen) {
-    ???.close();
-    isModalOpen = false;
-  }
-}); */
+  gallery.addEventListener('keydown', event => {
+    if (event.code === 'Escape' && isModalOpen) {
+      modal.close();
+    }
+  });
+}
