@@ -50,4 +50,8 @@ function onImgClick(event) {
       modal.close();
     }
   });
+
+  if (!isModalOpen) {
+    gallery.remove.addEventListener('keydown');
+  }
 }
