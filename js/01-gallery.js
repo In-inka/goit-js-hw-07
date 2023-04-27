@@ -12,7 +12,7 @@ const imgGallary = galleryItems
   .map(
     img =>
       `<li class="gallery__item">
-  <a class="gallery__link" href="large-image.jpg">
+  <a class="gallery__link" href=${img.original}>
     <img
       class="gallery__image"
       src= ${img.preview}
