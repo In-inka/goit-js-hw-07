@@ -43,15 +43,15 @@ function onImgClick(event) {
 	`
   );
   modal.show();
-  isModalOpen = true;
+  isModalOpen = basicLightbox.visible();
 
-  gallery.addEventListener('keydown', event => {
+  document.addEventListener('keydown', event => {
     if (event.code === 'Escape' && isModalOpen) {
       modal.close();
     }
   });
 
   if (!isModalOpen) {
-    gallery.remove.addEventListener('keydown');
+    document.remove.addEventListener('keydown');
   }
 }
